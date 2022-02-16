@@ -2,9 +2,13 @@ package com.example.demo.controllers;
 
 import com.example.demo.models.UsuarioModel;
 import com.example.demo.services.UsuarioService;
+import org.apache.catalina.connector.Response;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.Optional;
 
@@ -20,8 +24,20 @@ public class UsuarioController {
     }
 
     @PostMapping
-    public UsuarioModel guardarUsuario(@RequestBody UsuarioModel usuario){
-        return usuarioService.guardarUsuario(usuario);
+    public ResponseEntity<String> guardarUsuario(@RequestBody UsuarioModel usuario){
+        if(usuario.getPrioridad() < 1 || usuario.getPrioridad() > 10){
+            return new ResponseEntity("Prioridad inválida",HttpStatus.BAD_REQUEST);
+        }
+        
+        if(usuario.getEdad() < 18){
+            return new ResponseEntity("Edad inválida",HttpStatus.BAD_REQUEST);
+        }
+
+        if(!usuario.getSexo().equals("H") && !usuario.getSexo().equals("M")){
+            return new ResponseEntity("El sexo es incorrecto",HttpStatus.BAD_REQUEST);
+        }
+
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @GetMapping( path = "/{id}")

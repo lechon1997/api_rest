@@ -13,6 +13,19 @@ public class UsuarioModel {
     private String nombre;
     private String email;
     private Integer prioridad;
+    private Integer edad;
+    private String sexo;
+
+    public UsuarioModel() {
+    }
+
+    public UsuarioModel(String nombre, String email, Integer prioridad, Integer edad, String sexo) {
+        this.nombre = nombre;
+        this.email = email;
+        this.prioridad = prioridad;
+        this.edad = edad;
+        this.sexo = sexo;
+    }
 
     public Long getId() {
         return id;
@@ -45,4 +58,29 @@ public class UsuarioModel {
     public void setPrioridad(Integer prioridad) {
         this.prioridad = prioridad;
     }
+
+    public Integer getEdad() {
+        return edad;
+    }
+
+    public void setEdad(Integer edad) {
+        this.edad = edad;
+    }
+
+    public String getSexo() {
+        return sexo;
+    }
+
+    public void setSexo(String sexo) {
+        this.sexo = sexo;
+    }
+
+    public void nombreToUpperCase() {
+        this.nombre = this.nombre.toUpperCase();
+    }
+
+    public void sexoToUpperCase() {
+        this.sexo = this.sexo.toUpperCase();
+    }
+
 }
