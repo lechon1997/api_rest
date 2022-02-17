@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -43,6 +44,18 @@ public class UsuarioService {
 
     public ArrayList<UsuarioModel> listarPorSexo(String sexo){
         return usuarioRepository.findBySexo(sexo);
+    }
+
+    public List<UsuarioModel> listarUsuariosPorEdadAsc(){
+        List<UsuarioModel> users = (ArrayList<UsuarioModel>)usuarioRepository.findAll();
+        users.sort(( x, y) -> x.getEdad().compareTo(y.getEdad()));
+        return users;
+    }
+
+    public List<UsuarioModel> listarUsuariosPorEdadDesc(){
+        List<UsuarioModel> users = (ArrayList<UsuarioModel>)usuarioRepository.findAll();
+        users.sort(( x, y) -> y.getEdad().compareTo(x.getEdad()));
+        return users;
     }
 
 }

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -65,9 +66,14 @@ public class UsuarioController {
         return this.usuarioService.listarPorSexo(sexo);
     }
 
+    @GetMapping(path = "/listarAsc")
+    public List<UsuarioModel> listarUsuariosAscEdad(){
+        return usuarioService.listarUsuariosPorEdadAsc();
+    }
 
-
-
-
+    @GetMapping(path = "/listarDesc")
+    public List<UsuarioModel> listarUsuariosDescEdad(){
+        return usuarioService.listarUsuariosPorEdadDesc();
+    }
 
 }

@@ -83,4 +83,6 @@ public class UsuarioModel {
         this.sexo = this.sexo.toUpperCase();
     }
 
+
+
 }
