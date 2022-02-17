@@ -76,4 +76,9 @@ public class UsuarioController {
         return usuarioService.listarUsuariosPorEdadDesc();
     }
 
+    @GetMapping(path = "/listarPorEdad")
+    public ArrayList<UsuarioModel> listarUsuariosPorEdad(@RequestParam("edad") Integer edad){
+        return usuarioService.listarPorEdad(edad);
+    }
+
 }
