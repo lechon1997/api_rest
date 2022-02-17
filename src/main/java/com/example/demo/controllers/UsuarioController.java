@@ -67,12 +67,12 @@ public class UsuarioController {
     }
 
     @GetMapping(path = "/listarAsc")
-    public List<UsuarioModel> listarUsuariosAscEdad(){
+    public ArrayList<UsuarioModel> listarUsuariosAscEdad(){
         return usuarioService.listarUsuariosPorEdadAsc();
     }
 
     @GetMapping(path = "/listarDesc")
-    public List<UsuarioModel> listarUsuariosDescEdad(){
+    public ArrayList<UsuarioModel>listarUsuariosDescEdad(){
         return usuarioService.listarUsuariosPorEdadDesc();
     }
 
@@ -80,5 +80,4 @@ public class UsuarioController {
     public ArrayList<UsuarioModel> listarUsuariosPorEdad(@RequestParam("edad") Integer edad){
         return usuarioService.listarPorEdad(edad);
     }
-
 }

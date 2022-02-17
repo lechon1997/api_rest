@@ -46,16 +46,12 @@ public class UsuarioService {
         return usuarioRepository.findBySexo(sexo);
     }
 
-    public List<UsuarioModel> listarUsuariosPorEdadAsc(){
-        List<UsuarioModel> users = (ArrayList<UsuarioModel>)usuarioRepository.findAll();
-        users.sort(( x, y) -> x.getEdad().compareTo(y.getEdad()));
-        return users;
+    public ArrayList<UsuarioModel> listarUsuariosPorEdadAsc(){
+        return usuarioRepository.findAllByOrderByEdadAsc();
     }
 
-    public List<UsuarioModel> listarUsuariosPorEdadDesc(){
-        List<UsuarioModel> users = (ArrayList<UsuarioModel>)usuarioRepository.findAll();
-        users.sort(( x, y) -> y.getEdad().compareTo(x.getEdad()));
-        return users;
+    public ArrayList<UsuarioModel> listarUsuariosPorEdadDesc(){
+        return usuarioRepository.findAllByOrderByEdadDesc();
     }
 
     public ArrayList<UsuarioModel> listarPorEdad(Integer edad){

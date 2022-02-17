@@ -11,4 +11,6 @@ public interface UsuarioRepository extends CrudRepository<UsuarioModel, Long> {
     public abstract ArrayList<UsuarioModel> findByPrioridad(Integer prioridad);
     public abstract ArrayList<UsuarioModel> findBySexo(String sexo);
     public abstract ArrayList<UsuarioModel> findByEdad(Integer edad);
+    public abstract ArrayList<UsuarioModel> findAllByOrderByEdadAsc();
+    public abstract ArrayList<UsuarioModel> findAllByOrderByEdadDesc();
 }
