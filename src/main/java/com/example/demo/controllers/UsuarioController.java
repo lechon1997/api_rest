@@ -28,7 +28,7 @@ public class UsuarioController {
         if(usuario.getPrioridad() < 1 || usuario.getPrioridad() > 10){
             return new ResponseEntity("Prioridad inválida",HttpStatus.BAD_REQUEST);
         }
-        
+
         if(usuario.getEdad() < 18){
             return new ResponseEntity("Edad inválida",HttpStatus.BAD_REQUEST);
         }
@@ -45,7 +45,7 @@ public class UsuarioController {
         return this.usuarioService.obtenerPorId(id);
     }
 
-    @GetMapping( path = "/query")
+    @GetMapping( path = "/listarPorPrioridad")
     public ArrayList<UsuarioModel> obtenerUsuarioPorPrioridad(@RequestParam("prioridad") Integer prioridad){
         return this.usuarioService.obtenerPrioridad(prioridad);
     }
@@ -59,6 +59,13 @@ public class UsuarioController {
 
         return "No se pudo eliminar el usuario con id " + id;
     }
+
+    @GetMapping( path = "/listarPorSexo")
+    public ArrayList<UsuarioModel> obtenerUsuarioPorSexo(@RequestParam("sexo") String sexo){
+        return this.usuarioService.listarPorSexo(sexo);
+    }
+
+
 
 
 

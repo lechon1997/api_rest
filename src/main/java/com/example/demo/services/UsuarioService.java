@@ -40,4 +40,9 @@ public class UsuarioService {
             return false;
         }
     }
+
+    public ArrayList<UsuarioModel> listarPorSexo(String sexo){
+        return usuarioRepository.findBySexo(sexo);
+    }
+
 }
